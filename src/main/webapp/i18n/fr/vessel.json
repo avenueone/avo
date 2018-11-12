@@ -1,0 +1,28 @@
+{
+  "avoApp": {
+    "vessel": {
+      "home": {
+        "title": "Vessels",
+        "createLabel": "Créer un nouveau Vessel",
+        "createOrEditLabel": "Créer ou éditer un Vessel"
+      },
+      "created": "Un nouveau Vessel a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Vessel avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Vessel avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Vessel {{ id }} ?"
+      },
+      "detail": {
+        "title": "Vessel"
+      },
+      "name": "Name",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "description": "Description",
+      "vesselattribute": "Vesselattribute",
+      "container": "Container",
+      "vesseltype": "Vesseltype",
+      "campaign": "Campaign"
+    }
+  }
+}

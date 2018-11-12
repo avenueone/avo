@@ -1,0 +1,24 @@
+{
+  "avoApp": {
+    "campaignAttribute": {
+      "home": {
+        "title": "Campaign Attributes",
+        "createLabel": "Create a new Campaign Attribute",
+        "createOrEditLabel": "Create or edit a Campaign Attribute"
+      },
+      "created": "A new Campaign Attribute is created with identifier {{ param }}",
+      "updated": "A Campaign Attribute is updated with identifier {{ param }}",
+      "deleted": "A Campaign Attribute is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Campaign Attribute {{ id }}?"
+      },
+      "detail": {
+        "title": "Campaign Attribute"
+      },
+      "name": "Name",
+      "type": "Type",
+      "value": "Value",
+      "campaign": "Campaign"
+    }
+  }
+}

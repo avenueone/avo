@@ -1,0 +1,42 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "org.avenue1.avo",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "5.6.1",
+    "applicationType": "gateway",
+    "baseName": "avo",
+    "packageName": "org.avenue1.avo",
+    "packageFolder": "org/avenue1/avo",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "hazelcast",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "mongodb",
+    "devDatabaseType": "mongodb",
+    "prodDatabaseType": "mongodb",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "ZDRlZmVjOGJmMWQwN2M4OGZkMDI3YzlhYWJkODg1OGUzMDUxM2M4MmRiMWEwNmNiNTYyOGJlZGUxZGQ5NDBkNzc3YWNiYmQ5YjY1MmM2OTg0MGI1NzU5NGNkMTY2MTllYTU3ZDA5NzUwZDNkNDQ2ZjJiMmVmN2QxNzQ0ZTg4NDA=",
+    "clientFramework": "react",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "testFrameworks": [
+      "gatling",
+      "cucumber",
+      "protractor"
+    ],
+    "jhiPrefix": "jhi",
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": [
+      "en",
+      "fr"
+    ]
+  }
+}

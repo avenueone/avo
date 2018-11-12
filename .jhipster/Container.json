@@ -1,0 +1,26 @@
+{
+    "name": "Container",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "vessel",
+            "otherEntityName": "vessel",
+            "otherEntityRelationshipName": "container"
+        }
+    ],
+    "changelogDate": "20181112163647",
+    "entityTableName": "container",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

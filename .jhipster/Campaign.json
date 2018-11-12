@@ -1,0 +1,52 @@
+{
+    "name": "Campaign",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "startDate",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "endDate",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "vessel",
+            "otherEntityName": "vessel",
+            "otherEntityRelationshipName": "campaign"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "campaignAttribute",
+            "otherEntityName": "campaignAttribute",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "calendar",
+            "otherEntityName": "calendar",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20181112163642",
+    "entityTableName": "campaign",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

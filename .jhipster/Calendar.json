@@ -1,0 +1,39 @@
+{
+    "name": "Calendar",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "calendarattribute",
+            "otherEntityName": "calendarAttribute",
+            "otherEntityRelationshipName": "calender"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "campaign",
+            "otherEntityName": "campaign",
+            "otherEntityRelationshipName": "calendar"
+        }
+    ],
+    "changelogDate": "20181112163643",
+    "entityTableName": "calendar",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

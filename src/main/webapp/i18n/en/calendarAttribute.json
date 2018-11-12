@@ -1,0 +1,24 @@
+{
+  "avoApp": {
+    "calendarAttribute": {
+      "home": {
+        "title": "Calendar Attributes",
+        "createLabel": "Create a new Calendar Attribute",
+        "createOrEditLabel": "Create or edit a Calendar Attribute"
+      },
+      "created": "A new Calendar Attribute is created with identifier {{ param }}",
+      "updated": "A Calendar Attribute is updated with identifier {{ param }}",
+      "deleted": "A Calendar Attribute is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Calendar Attribute {{ id }}?"
+      },
+      "detail": {
+        "title": "Calendar Attribute"
+      },
+      "name": "Name",
+      "type": "Type",
+      "value": "Value",
+      "calender": "Calender"
+    }
+  }
+}

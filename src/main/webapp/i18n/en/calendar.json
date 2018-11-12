@@ -1,0 +1,24 @@
+{
+  "avoApp": {
+    "calendar": {
+      "home": {
+        "title": "Calendars",
+        "createLabel": "Create a new Calendar",
+        "createOrEditLabel": "Create or edit a Calendar"
+      },
+      "created": "A new Calendar is created with identifier {{ param }}",
+      "updated": "A Calendar is updated with identifier {{ param }}",
+      "deleted": "A Calendar is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Calendar {{ id }}?"
+      },
+      "detail": {
+        "title": "Calendar"
+      },
+      "name": "Name",
+      "description": "Description",
+      "calendarattribute": "Calendarattribute",
+      "campaign": "Campaign"
+    }
+  }
+}

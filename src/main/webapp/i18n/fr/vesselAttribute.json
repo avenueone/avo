@@ -1,0 +1,24 @@
+{
+  "avoApp": {
+    "vesselAttribute": {
+      "home": {
+        "title": "VesselAttributes",
+        "createLabel": "Créer un nouveau Vessel Attribute",
+        "createOrEditLabel": "Créer ou éditer un Vessel Attribute"
+      },
+      "created": "Un nouveau Vessel Attribute a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Vessel Attribute avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Vessel Attribute avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Vessel Attribute {{ id }} ?"
+      },
+      "detail": {
+        "title": "Vessel Attribute"
+      },
+      "name": "Name",
+      "type": "Type",
+      "value": "Value",
+      "vessel": "Vessel"
+    }
+  }
+}

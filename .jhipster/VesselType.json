@@ -1,0 +1,54 @@
+{
+    "name": "VesselType",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "VesselTypeEnum",
+            "fieldValues": "FLYER,WEB,EMAIL,VR,COUPON,SIGNAGE,SHELFTAG",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "recurring",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "dayOfMonth",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "dayOfWeek",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "month",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "vessel",
+            "otherEntityName": "vessel",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "vesseltype"
+        }
+    ],
+    "changelogDate": "20181112163648",
+    "entityTableName": "vessel_type",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

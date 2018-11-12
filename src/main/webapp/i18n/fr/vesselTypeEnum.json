@@ -1,0 +1,14 @@
+{
+  "avoApp": {
+    "VesselTypeEnum": {
+      "null": "",
+      "FLYER": "FLYER",
+      "WEB": "WEB",
+      "EMAIL": "EMAIL",
+      "VR": "VR",
+      "COUPON": "COUPON",
+      "SIGNAGE": "SIGNAGE",
+      "SHELFTAG": "SHELFTAG"
+    }
+  }
+}

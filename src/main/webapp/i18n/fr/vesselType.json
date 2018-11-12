@@ -1,0 +1,27 @@
+{
+  "avoApp": {
+    "vesselType": {
+      "home": {
+        "title": "VesselTypes",
+        "createLabel": "Créer un nouveau Vessel Type",
+        "createOrEditLabel": "Créer ou éditer un Vessel Type"
+      },
+      "created": "Un nouveau Vessel Type a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Vessel Type avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Vessel Type avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Vessel Type {{ id }} ?"
+      },
+      "detail": {
+        "title": "Vessel Type"
+      },
+      "name": "Name",
+      "type": "Type",
+      "recurring": "Recurring",
+      "dayOfMonth": "Day Of Month",
+      "dayOfWeek": "Day Of Week",
+      "month": "Month",
+      "vessel": "Vessel"
+    }
+  }
+}

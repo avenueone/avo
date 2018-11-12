@@ -1,0 +1,34 @@
+{
+    "name": "CampaignAttribute",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "value",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "campaign",
+            "otherEntityName": "campaign",
+            "otherEntityRelationshipName": "campaignAttribute"
+        }
+    ],
+    "changelogDate": "20181112163644",
+    "entityTableName": "campaign_attribute",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
