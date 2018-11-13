@@ -19,8 +19,8 @@
       "startDate": "Start Date",
       "endDate": "End Date",
       "description": "Description",
-      "vesselattribute": "Vesselattribute",
       "container": "Container",
+      "vesselattribute": "Vesselattribute",
       "vesseltype": "Vesseltype",
       "campaign": "Campaign"
     }

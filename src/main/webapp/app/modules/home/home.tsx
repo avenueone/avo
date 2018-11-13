@@ -2,30 +2,48 @@ import './home.scss';
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Translate } from 'react-jhipster';
+import { translate, Translate } from 'react-jhipster';
 import { connect } from 'react-redux';
-import { Row, Col, Alert } from 'reactstrap';
+import { Row, Col, Alert, Label, Button } from 'reactstrap';
+import { AvForm, AvField, AvGroup, AvInput } from 'availity-reactstrap-validation';
 
 import { IRootState } from 'app/shared/reducers';
-import { getSession } from 'app/shared/reducers/authentication';
+import {getSession, login} from 'app/shared/reducers/authentication';
 
-export interface IHomeProp extends StateProps, DispatchProps {}
+export interface IHomeProp extends StateProps, DispatchProps {
+  loginError: boolean;
+  handleLogin: Function;
+}
 
 export class Home extends React.Component<IHomeProp> {
+  handleSubmit = (event, errors, { username, password, rememberMe }) => {
+    const { handleLogin } = this.props;
+    handleLogin(username, password, rememberMe);
+  };
+
+  handleLogin = (username, password, rememberMe = false) => {
+    this.props.login(username, password, rememberMe);
+  };
+
+
   componentDidMount() {
     this.props.getSession();
   }
 
   render() {
-    const { account } = this.props;
+    const { account,loginError } = this.props;
     return (
-      <Row>
-        <Col md="9">
+
+      <Row >
+        <Col md="3" lg="3">
+
+        </Col>
+        <Col md="9" lg="5">
           <h2>
-            <Translate contentKey="home.title">Welcome, Java Hipster!</Translate>
+            <Translate contentKey="home.title">Welcome, Avenue 1</Translate>
           </h2>
           <p className="lead">
-            <Translate contentKey="home.subtitle">This is your homepage</Translate>
+            <Translate contentKey="home.subtitle">This is our temporary homepage</Translate>
           </p>
           {account && account.login ? (
             <div>
@@ -35,68 +53,43 @@ export class Home extends React.Component<IHomeProp> {
                 </Translate>
               </Alert>
             </div>
+
           ) : (
-            <div>
-              <Alert color="warning">
-                <Translate contentKey="global.messages.info.authenticated.prefix">If you want to </Translate>
-                <Link to="/login" className="alert-link">
-                  <Translate contentKey="global.messages.info.authenticated.link"> sign in</Translate>
-                </Link>
-                <Translate contentKey="global.messages.info.authenticated.suffix">
-                  , you can try the default accounts:
-                  <br />- Administrator (login=&quot;admin&quot; and password=&quot;admin&quot;)
-                  <br />- User (login=&quot;user&quot; and password=&quot;user&quot;).
-                </Translate>
-              </Alert>
 
-              <Alert color="warning">
-                <Translate contentKey="global.messages.info.register.noaccount">You do not have an account yet?</Translate>
-                &nbsp;
-                <Link to="/register" className="alert-link">
-                  <Translate contentKey="global.messages.info.register.link">Register a new account</Translate>
-                </Link>
-              </Alert>
-            </div>
+
+              <Col md="4" lg="5">
+                <AvForm onSubmit={this.handleSubmit}>
+                <AvField
+                  name="username"
+                  label={translate('global.form.username')}
+                  placeholder={translate('global.form.username.placeholder')}
+                  required
+                  errorMessage="Username cannot be empty!"
+                  autoFocus
+                />
+                <AvField
+                  name="password"
+                  type="password"
+                  label={translate('login.form.password')}
+                  placeholder={translate('login.form.password.placeholder')}
+                  required
+                  errorMessage="Password cannot be empty!"
+                />
+                <AvGroup check inline>
+                  <Label className="form-check-label">
+                    <AvInput type="checkbox" name="rememberMe" /> <Translate contentKey="login.form.rememberme">Remember me</Translate>
+                  </Label>
+                </AvGroup>
+
+
+                <Button color="primary" type="submit">
+                  <Translate contentKey="login.form.button">Sign in</Translate>
+                </Button>
+                </AvForm>
+              </Col>
+
           )}
-          <p>
-            <Translate contentKey="home.question">If you have any question on JHipster:</Translate>
-          </p>
 
-          <ul>
-            <li>
-              <a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer">
-                <Translate contentKey="home.link.homepage">JHipster homepage</Translate>
-              </a>
-            </li>
-            <li>
-              <a href="http://stackoverflow.com/tags/jhipster/info" target="_blank" rel="noopener noreferrer">
-                <Translate contentKey="home.link.stackoverflow">JHipster on Stack Overflow</Translate>
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank" rel="noopener noreferrer">
-                <Translate contentKey="home.link.bugtracker">JHipster bug tracker</Translate>
-              </a>
-            </li>
-            <li>
-              <a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">
-                <Translate contentKey="home.link.chat">JHipster public chat room</Translate>
-              </a>
-            </li>
-            <li>
-              <a href="https://twitter.com/java_hipster" target="_blank" rel="noopener noreferrer">
-                <Translate contentKey="home.link.follow">follow @java_hipster on Twitter</Translate>
-              </a>
-            </li>
-          </ul>
-
-          <p>
-            <Translate contentKey="home.like">If you like JHipster, do not forget to give us a star on</Translate>{' '}
-            <a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">
-              Github
-            </a>
-            !
-          </p>
         </Col>
         <Col md="3" className="pad">
           <span className="hipster rounded" />
@@ -111,7 +104,7 @@ const mapStateToProps = storeState => ({
   isAuthenticated: storeState.authentication.isAuthenticated
 });
 
-const mapDispatchToProps = { getSession };
+const mapDispatchToProps = { getSession, login };
 
 type StateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = typeof mapDispatchToProps;

@@ -8,7 +8,6 @@ export default class VesselUpdatePage {
   startDateInput: ElementFinder = element(by.css('input#vessel-startDate'));
   endDateInput: ElementFinder = element(by.css('input#vessel-endDate'));
   descriptionInput: ElementFinder = element(by.css('input#vessel-description'));
-  containerSelect: ElementFinder = element(by.css('select#vessel-container'));
   vesseltypeSelect: ElementFinder = element(by.css('select#vessel-vesseltype'));
   campaignSelect: ElementFinder = element(by.css('select#vessel-campaign'));
 
@@ -46,25 +45,6 @@ export default class VesselUpdatePage {
 
   async getDescriptionInput() {
     return this.descriptionInput.getAttribute('value');
-  }
-
-  async containerSelectLastOption() {
-    await this.containerSelect
-      .all(by.tagName('option'))
-      .last()
-      .click();
-  }
-
-  async containerSelectOption(option) {
-    await this.containerSelect.sendKeys(option);
-  }
-
-  getContainerSelect() {
-    return this.containerSelect;
-  }
-
-  async getContainerSelectedOption() {
-    return this.containerSelect.element(by.css('option:checked')).getText();
   }
 
   async vesseltypeSelectLastOption() {

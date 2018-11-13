@@ -87,9 +87,6 @@ export class Vessel extends React.Component<IVesselProps, IVesselState> {
                   <Translate contentKey="avoApp.vessel.description">Description</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th>
-                  <Translate contentKey="avoApp.vessel.container">Container</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th>
                   <Translate contentKey="avoApp.vessel.campaign">Campaign</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th />
@@ -111,7 +108,6 @@ export class Vessel extends React.Component<IVesselProps, IVesselState> {
                     <TextFormat type="date" value={vessel.endDate} format={APP_LOCAL_DATE_FORMAT} />
                   </td>
                   <td>{vessel.description}</td>
-                  <td>{vessel.container ? <Link to={`container/${vessel.container.id}`}>{vessel.container.id}</Link> : ''}</td>
                   <td>{vessel.campaign ? <Link to={`campaign/${vessel.campaign.id}`}>{vessel.campaign.id}</Link> : ''}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">

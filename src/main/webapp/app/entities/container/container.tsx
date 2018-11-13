@@ -69,6 +69,9 @@ export class Container extends React.Component<IContainerProps, IContainerState>
                 <th className="hand" onClick={this.sort('name')}>
                   <Translate contentKey="avoApp.container.name">Name</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
+                <th>
+                  <Translate contentKey="avoApp.container.vessel">Vessel</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
                 <th />
               </tr>
             </thead>
@@ -81,6 +84,7 @@ export class Container extends React.Component<IContainerProps, IContainerState>
                     </Button>
                   </td>
                   <td>{container.name}</td>
+                  <td>{container.vessel ? <Link to={`vessel/${container.vessel.id}`}>{container.vessel.id}</Link> : ''}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${container.id}`} color="info" size="sm">

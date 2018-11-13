@@ -8,6 +8,8 @@ import { Translate, translate, ICrudGetAction, ICrudGetAllAction, ICrudPutAction
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 
+import { IVessel } from 'app/shared/model/vessel.model';
+import { getEntities as getVessels } from 'app/entities/vessel/vessel.reducer';
 import { getEntity, updateEntity, createEntity, reset } from './container.reducer';
 import { IContainer } from 'app/shared/model/container.model';
 // tslint:disable-next-line:no-unused-variable
@@ -18,12 +20,14 @@ export interface IContainerUpdateProps extends StateProps, DispatchProps, RouteC
 
 export interface IContainerUpdateState {
   isNew: boolean;
+  vesselId: string;
 }
 
 export class ContainerUpdate extends React.Component<IContainerUpdateProps, IContainerUpdateState> {
   constructor(props) {
     super(props);
     this.state = {
+      vesselId: '0',
       isNew: !this.props.match.params || !this.props.match.params.id
     };
   }
@@ -40,6 +44,8 @@ export class ContainerUpdate extends React.Component<IContainerUpdateProps, ICon
     } else {
       this.props.getEntity(this.props.match.params.id);
     }
+
+    this.props.getVessels();
   }
 
   saveEntity = (event, errors, values) => {
@@ -63,7 +69,7 @@ export class ContainerUpdate extends React.Component<IContainerUpdateProps, ICon
   };
 
   render() {
-    const { containerEntity, loading, updating } = this.props;
+    const { containerEntity, vessels, loading, updating } = this.props;
     const { isNew } = this.state;
 
     return (
@@ -95,6 +101,21 @@ export class ContainerUpdate extends React.Component<IContainerUpdateProps, ICon
                   </Label>
                   <AvField id="container-name" type="text" name="name" />
                 </AvGroup>
+                <AvGroup>
+                  <Label for="vessel.id">
+                    <Translate contentKey="avoApp.container.vessel">Vessel</Translate>
+                  </Label>
+                  <AvInput id="container-vessel" type="select" className="form-control" name="vessel.id">
+                    <option value="" key="0" />
+                    {vessels
+                      ? vessels.map(otherEntity => (
+                          <option value={otherEntity.id} key={otherEntity.id}>
+                            {otherEntity.id}
+                          </option>
+                        ))
+                      : null}
+                  </AvInput>
+                </AvGroup>
                 <Button tag={Link} id="cancel-save" to="/entity/container" replace color="info">
                   <FontAwesomeIcon icon="arrow-left" />&nbsp;
                   <span className="d-none d-md-inline">
@@ -116,6 +137,7 @@ export class ContainerUpdate extends React.Component<IContainerUpdateProps, ICon
 }
 
 const mapStateToProps = (storeState: IRootState) => ({
+  vessels: storeState.vessel.entities,
   containerEntity: storeState.container.entity,
   loading: storeState.container.loading,
   updating: storeState.container.updating,
@@ -123,6 +145,7 @@ const mapStateToProps = (storeState: IRootState) => ({
 });
 
 const mapDispatchToProps = {
+  getVessels,
   getEntity,
   updateEntity,
   createEntity,

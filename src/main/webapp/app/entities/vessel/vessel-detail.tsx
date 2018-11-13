@@ -57,10 +57,6 @@ export class VesselDetail extends React.Component<IVesselDetailProps> {
             </dt>
             <dd>{vesselEntity.description}</dd>
             <dt>
-              <Translate contentKey="avoApp.vessel.container">Container</Translate>
-            </dt>
-            <dd>{vesselEntity.container ? vesselEntity.container.id : ''}</dd>
-            <dt>
               <Translate contentKey="avoApp.vessel.vesseltype">Vesseltype</Translate>
             </dt>
             <dd>

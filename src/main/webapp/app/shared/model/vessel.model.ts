@@ -1,6 +1,6 @@
 import { Moment } from 'moment';
-import { IVesselAttribute } from 'app/shared/model//vessel-attribute.model';
 import { IContainer } from 'app/shared/model//container.model';
+import { IVesselAttribute } from 'app/shared/model//vessel-attribute.model';
 import { IVesselType } from 'app/shared/model//vessel-type.model';
 import { ICampaign } from 'app/shared/model//campaign.model';
 
@@ -10,8 +10,8 @@ export interface IVessel {
   startDate?: Moment;
   endDate?: Moment;
   description?: string;
+  containers?: IContainer[];
   vesselattributes?: IVesselAttribute[];
-  container?: IContainer;
   vesseltypes?: IVesselType[];
   campaign?: ICampaign;
 }

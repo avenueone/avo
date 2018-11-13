@@ -54,7 +54,6 @@ describe('Vessel e2e test', () => {
     expect(await vesselUpdatePage.getEndDateInput()).to.eq('2001-01-01');
     await vesselUpdatePage.setDescriptionInput('description');
     expect(await vesselUpdatePage.getDescriptionInput()).to.match(/description/);
-    await vesselUpdatePage.containerSelectLastOption();
     // vesselUpdatePage.vesseltypeSelectLastOption();
     await vesselUpdatePage.campaignSelectLastOption();
     await waitUntilDisplayed(vesselUpdatePage.getSaveButton());

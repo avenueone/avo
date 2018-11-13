@@ -42,13 +42,11 @@ public class Vessel implements Serializable {
     private String description;
 
     @DBRef
+    @Field("container")
+    private Set<Container> containers = new HashSet<>();
+    @DBRef
     @Field("vesselattribute")
     private Set<VesselAttribute> vesselattributes = new HashSet<>();
-    @DBRef
-    @Field("container")
-    @JsonIgnoreProperties("vessels")
-    private Container container;
-
     @DBRef
     @Field("vesseltypes")
     private Set<VesselType> vesseltypes = new HashSet<>();
@@ -119,6 +117,31 @@ public class Vessel implements Serializable {
         this.description = description;
     }
 
+    public Set<Container> getContainers() {
+        return containers;
+    }
+
+    public Vessel containers(Set<Container> containers) {
+        this.containers = containers;
+        return this;
+    }
+
+    public Vessel addContainer(Container container) {
+        this.containers.add(container);
+        container.setVessel(this);
+        return this;
+    }
+
+    public Vessel removeContainer(Container container) {
+        this.containers.remove(container);
+        container.setVessel(null);
+        return this;
+    }
+
+    public void setContainers(Set<Container> containers) {
+        this.containers = containers;
+    }
+
     public Set<VesselAttribute> getVesselattributes() {
         return vesselattributes;
     }
@@ -142,19 +165,6 @@ public class Vessel implements Serializable {
 
     public void setVesselattributes(Set<VesselAttribute> vesselAttributes) {
         this.vesselattributes = vesselAttributes;
-    }
-
-    public Container getContainer() {
-        return container;
-    }
-
-    public Vessel container(Container container) {
-        this.container = container;
-        return this;
-    }
-
-    public void setContainer(Container container) {
-        this.container = container;
     }
 
     public Set<VesselType> getVesseltypes() {

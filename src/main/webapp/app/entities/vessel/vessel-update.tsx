@@ -8,8 +8,6 @@ import { Translate, translate, ICrudGetAction, ICrudGetAllAction, ICrudPutAction
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 
-import { IContainer } from 'app/shared/model/container.model';
-import { getEntities as getContainers } from 'app/entities/container/container.reducer';
 import { IVesselType } from 'app/shared/model/vessel-type.model';
 import { getEntities as getVesselTypes } from 'app/entities/vessel-type/vessel-type.reducer';
 import { ICampaign } from 'app/shared/model/campaign.model';
@@ -25,7 +23,6 @@ export interface IVesselUpdateProps extends StateProps, DispatchProps, RouteComp
 export interface IVesselUpdateState {
   isNew: boolean;
   idsvesseltype: any[];
-  containerId: string;
   campaignId: string;
 }
 
@@ -34,7 +31,6 @@ export class VesselUpdate extends React.Component<IVesselUpdateProps, IVesselUpd
     super(props);
     this.state = {
       idsvesseltype: [],
-      containerId: '0',
       campaignId: '0',
       isNew: !this.props.match.params || !this.props.match.params.id
     };
@@ -53,7 +49,6 @@ export class VesselUpdate extends React.Component<IVesselUpdateProps, IVesselUpd
       this.props.getEntity(this.props.match.params.id);
     }
 
-    this.props.getContainers();
     this.props.getVesselTypes();
     this.props.getCampaigns();
   }
@@ -80,7 +75,7 @@ export class VesselUpdate extends React.Component<IVesselUpdateProps, IVesselUpd
   };
 
   render() {
-    const { vesselEntity, containers, vesselTypes, campaigns, loading, updating } = this.props;
+    const { vesselEntity, vesselTypes, campaigns, loading, updating } = this.props;
     const { isNew } = this.state;
 
     return (
@@ -155,21 +150,6 @@ export class VesselUpdate extends React.Component<IVesselUpdateProps, IVesselUpd
                   <AvField id="vessel-description" type="text" name="description" />
                 </AvGroup>
                 <AvGroup>
-                  <Label for="container.id">
-                    <Translate contentKey="avoApp.vessel.container">Container</Translate>
-                  </Label>
-                  <AvInput id="vessel-container" type="select" className="form-control" name="container.id">
-                    <option value="" key="0" />
-                    {containers
-                      ? containers.map(otherEntity => (
-                          <option value={otherEntity.id} key={otherEntity.id}>
-                            {otherEntity.id}
-                          </option>
-                        ))
-                      : null}
-                  </AvInput>
-                </AvGroup>
-                <AvGroup>
                   <Label for="vesselTypes">
                     <Translate contentKey="avoApp.vessel.vesseltype">Vesseltype</Translate>
                   </Label>
@@ -227,7 +207,6 @@ export class VesselUpdate extends React.Component<IVesselUpdateProps, IVesselUpd
 }
 
 const mapStateToProps = (storeState: IRootState) => ({
-  containers: storeState.container.entities,
   vesselTypes: storeState.vesselType.entities,
   campaigns: storeState.campaign.entities,
   vesselEntity: storeState.vessel.entity,
@@ -237,7 +216,6 @@ const mapStateToProps = (storeState: IRootState) => ({
 });
 
 const mapDispatchToProps = {
-  getContainers,
   getVesselTypes,
   getCampaigns,
   getEntity,

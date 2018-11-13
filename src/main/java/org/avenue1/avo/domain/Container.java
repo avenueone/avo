@@ -1,14 +1,12 @@
 package org.avenue1.avo.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -27,7 +25,9 @@ public class Container implements Serializable {
 
     @DBRef
     @Field("vessel")
-    private Set<Vessel> vessels = new HashSet<>();
+    @JsonIgnoreProperties("containers")
+    private Vessel vessel;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public String getId() {
         return id;
@@ -50,29 +50,17 @@ public class Container implements Serializable {
         this.name = name;
     }
 
-    public Set<Vessel> getVessels() {
-        return vessels;
+    public Vessel getVessel() {
+        return vessel;
     }
 
-    public Container vessels(Set<Vessel> vessels) {
-        this.vessels = vessels;
+    public Container vessel(Vessel vessel) {
+        this.vessel = vessel;
         return this;
     }
 
-    public Container addVessel(Vessel vessel) {
-        this.vessels.add(vessel);
-        vessel.setContainer(this);
-        return this;
-    }
-
-    public Container removeVessel(Vessel vessel) {
-        this.vessels.remove(vessel);
-        vessel.setContainer(null);
-        return this;
-    }
-
-    public void setVessels(Set<Vessel> vessels) {
-        this.vessels = vessels;
+    public void setVessel(Vessel vessel) {
+        this.vessel = vessel;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

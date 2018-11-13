@@ -1,13 +1,13 @@
 {
   "home": {
-    "title": "Welcome, Java Hipster!",
-    "subtitle": "This is your homepage",
+    "title": "Welcome to Avenue 1!",
+    "subtitle": "This is our temporary home page",
     "logged": {
       "message": "You are logged in as user \"{{username}}\"."
     },
     "question": "If you have any question on JHipster:",
     "link": {
-      "homepage": "JHipster homepage",
+      "homepage": "Avenue 1 homepage",
       "stackoverflow": "JHipster on Stack Overflow",
       "bugtracker": "JHipster bug tracker",
       "chat": "JHipster public chat room",

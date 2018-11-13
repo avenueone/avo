@@ -32,15 +32,15 @@
     "relationships": [
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "vesselattribute",
-            "otherEntityName": "vesselAttribute",
+            "relationshipName": "container",
+            "otherEntityName": "container",
             "otherEntityRelationshipName": "vessel"
         },
         {
-            "relationshipType": "many-to-one",
-            "relationshipName": "container",
-            "otherEntityName": "container",
-            "otherEntityField": "id"
+            "relationshipType": "one-to-many",
+            "relationshipName": "vesselattribute",
+            "otherEntityName": "vesselAttribute",
+            "otherEntityRelationshipName": "vessel"
         },
         {
             "relationshipType": "many-to-many",

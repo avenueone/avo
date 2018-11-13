@@ -5,6 +5,7 @@ export default class ContainerUpdatePage {
   saveButton: ElementFinder = element(by.id('save-entity'));
   cancelButton: ElementFinder = element(by.id('cancel-save'));
   nameInput: ElementFinder = element(by.css('input#container-name'));
+  vesselSelect: ElementFinder = element(by.css('select#container-vessel'));
 
   getPageTitle() {
     return this.pageTitle;
@@ -16,6 +17,25 @@ export default class ContainerUpdatePage {
 
   async getNameInput() {
     return this.nameInput.getAttribute('value');
+  }
+
+  async vesselSelectLastOption() {
+    await this.vesselSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async vesselSelectOption(option) {
+    await this.vesselSelect.sendKeys(option);
+  }
+
+  getVesselSelect() {
+    return this.vesselSelect;
+  }
+
+  async getVesselSelectedOption() {
+    return this.vesselSelect.element(by.css('option:checked')).getText();
   }
 
   async save() {

@@ -34,6 +34,10 @@ export class ContainerDetail extends React.Component<IContainerDetailProps> {
               </span>
             </dt>
             <dd>{containerEntity.name}</dd>
+            <dt>
+              <Translate contentKey="avoApp.container.vessel">Vessel</Translate>
+            </dt>
+            <dd>{containerEntity.vessel ? containerEntity.vessel.id : ''}</dd>
           </dl>
           <Button tag={Link} to="/entity/container" replace color="info">
             <FontAwesomeIcon icon="arrow-left" />{' '}

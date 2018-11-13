@@ -48,6 +48,7 @@ describe('Container e2e test', () => {
 
     await containerUpdatePage.setNameInput('name');
     expect(await containerUpdatePage.getNameInput()).to.match(/name/);
+    await containerUpdatePage.vesselSelectLastOption();
     await waitUntilDisplayed(containerUpdatePage.getSaveButton());
     await containerUpdatePage.save();
     await waitUntilHidden(containerUpdatePage.getSaveButton());
