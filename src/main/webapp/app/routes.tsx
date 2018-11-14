@@ -28,7 +28,6 @@ const Admin = Loadable({
 
 const Routes = () => (
   <div className="view-routes">
-    <ErrorBoundaryRoute path="/login" component={Login} />
     <Switch>
       <ErrorBoundaryRoute path="/logout" component={Logout} />
       <ErrorBoundaryRoute path="/register" component={Register} />
@@ -39,7 +38,6 @@ const Routes = () => (
       <PrivateRoute path="/account" component={Account} hasAnyAuthorities={[AUTHORITIES.ADMIN, AUTHORITIES.USER]} />
       <PrivateRoute path="/entity" component={Entities} hasAnyAuthorities={[AUTHORITIES.USER]} />
       <ErrorBoundaryRoute path="/" component={Home} />
-      <ErrorBoundaryRoute path="/login" component={Home} />
 
     </Switch>
   </div>

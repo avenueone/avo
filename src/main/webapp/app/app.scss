@@ -2,9 +2,11 @@
 @import 'bootstrap-variables';
 // Import Bootstrap source files from node_modules
 @import 'node_modules/bootstrap/scss/bootstrap';
+
 body {
   background: #516090 ;
   margin: 0;
+  font-family: 'Ubuntu','Arial';
 }
 
 a {

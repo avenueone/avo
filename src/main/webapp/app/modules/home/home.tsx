@@ -1,7 +1,7 @@
 import './home.scss';
 
 import React from 'react';
-import 'primereact/resources/themes/nova-light/theme.css';
+import 'primereact/resources/themes/nova-dark/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import { Link, Redirect } from 'react-router-dom';
@@ -21,8 +21,7 @@ export interface IHomeProp extends StateProps, DispatchProps {
 export class Home extends React.Component<IHomeProp> {
   handleSubmit = (event, errors, { username, password, rememberMe }) => {
     const { handleLogin } = this.props;
-    this.growl.show({severity: 'success', summary: 'Signing in...', detail: 'Attempting to sign in'});
-
+    this.growl.show({ severity: 'success', summary: 'Signing in...', detail: 'Attempting to sign in ' + username });
     handleLogin(username, password, rememberMe);
   };
 
@@ -38,12 +37,26 @@ export class Home extends React.Component<IHomeProp> {
     const { account, loginError } = this.props;
 
     return (
-      <Row >
+      <Row w="50" >
         <Col md="3" lg="3">
-          <Growl ref={(el) => this.growl = el} />
+          <Growl ref={el => this.growl = el} />
+          <Alert color="warning">
+            <Link to="/reset/request">
+              <Translate contentKey="home.password.forgot">Did you forget your password?</Translate>
+            </Link>
+          </Alert>
+          <Alert color="warning">
+              <span>
+                <Translate contentKey="global.messages.info.register.noaccount">You don't have an account yet?</Translate>
+              </span>{' '}
+            <Link to="/register">
+              <Translate contentKey="global.messages.info.register.link">Register a new account</Translate>
+            </Link>
+          </Alert>
         </Col>
 
         <Col md="9" lg="5">
+
           <h2>
             <Translate contentKey="home.title">Welcome, Avenue 1</Translate>
           </h2>
@@ -62,6 +75,7 @@ export class Home extends React.Component<IHomeProp> {
           ) : (
 
               <Col md="4" lg="5">
+
                 <AvForm onSubmit={this.handleSubmit}>
                 <AvField
                   name="username"
@@ -88,6 +102,8 @@ export class Home extends React.Component<IHomeProp> {
                   <Translate contentKey="login.form.button">Sign in</Translate>
                 </Button>
                 </AvForm>
+                <Translate contentKey="home.footer">Sign in to access</Translate>
+
               </Col>
 
           )}
