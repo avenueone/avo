@@ -1,14 +1,17 @@
 import './home.scss';
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import 'primereact/resources/themes/nova-light/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
+import { Link, Redirect } from 'react-router-dom';
 import { translate, Translate } from 'react-jhipster';
 import { connect } from 'react-redux';
 import { Row, Col, Alert, Label, Button } from 'reactstrap';
 import { AvForm, AvField, AvGroup, AvInput } from 'availity-reactstrap-validation';
-
+import { Growl } from 'primereact/growl';
 import { IRootState } from 'app/shared/reducers';
-import {getSession, login} from 'app/shared/reducers/authentication';
+import { getSession, login } from 'app/shared/reducers/authentication';
 
 export interface IHomeProp extends StateProps, DispatchProps {
   loginError: boolean;
@@ -18,6 +21,8 @@ export interface IHomeProp extends StateProps, DispatchProps {
 export class Home extends React.Component<IHomeProp> {
   handleSubmit = (event, errors, { username, password, rememberMe }) => {
     const { handleLogin } = this.props;
+    this.growl.show({severity: 'success', summary: 'Signing in...', detail: 'Attempting to sign in'});
+
     handleLogin(username, password, rememberMe);
   };
 
@@ -25,19 +30,19 @@ export class Home extends React.Component<IHomeProp> {
     this.props.login(username, password, rememberMe);
   };
 
-
   componentDidMount() {
     this.props.getSession();
   }
 
   render() {
-    const { account,loginError } = this.props;
-    return (
+    const { account, loginError } = this.props;
 
+    return (
       <Row >
         <Col md="3" lg="3">
-
+          <Growl ref={(el) => this.growl = el} />
         </Col>
+
         <Col md="9" lg="5">
           <h2>
             <Translate contentKey="home.title">Welcome, Avenue 1</Translate>
@@ -55,7 +60,6 @@ export class Home extends React.Component<IHomeProp> {
             </div>
 
           ) : (
-
 
               <Col md="4" lg="5">
                 <AvForm onSubmit={this.handleSubmit}>
@@ -80,8 +84,6 @@ export class Home extends React.Component<IHomeProp> {
                     <AvInput type="checkbox" name="rememberMe" /> <Translate contentKey="login.form.rememberme">Remember me</Translate>
                   </Label>
                 </AvGroup>
-
-
                 <Button color="primary" type="submit">
                   <Translate contentKey="login.form.button">Sign in</Translate>
                 </Button>
